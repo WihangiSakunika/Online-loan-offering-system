@@ -1,0 +1,23 @@
+<div class="mrg-top-150">
+    <div class="text-center">
+        <form class="form-signin">
+            <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72"
+                height="72">
+            <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+            <label class="sr-only">Email address</label>
+            <input type="text" class="form-control" placeholder="User name" autofocus 
+                [(ngModel)]="userName" [ngModelOptions]="{standalone: true}">
+            <label class="sr-only">Password</label>
+            <input type="password" class="form-control" placeholder="Password"
+                [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="login()">Sign in</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
+        </form>
+    </div>
+</div>

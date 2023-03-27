@@ -1,0 +1,95 @@
+<div class="p-5">
+  <div class="col-md-12">
+      <h2>Customer Registration</h2>
+      <div class="row">
+          <div class="col-md-4">
+              <div class="card">
+                  <div class="card-body">
+                      <form [formGroup]="customerForm" (ngSubmit)="onSaveOrUpdate()">
+
+                          <div class="row">
+                              <div class="col-6">
+                                  <div class="form-group">
+                                      <label>First Name</label>
+                                      <input type="text" class="form-control" formControlName="firstName" placeholder="Enter First Name">
+                                  </div>
+                              </div>
+                              <div class="col-6">
+                                  <div class="form-group">
+                                      <label>Last Name</label>
+                                      <input type="text" class="form-control" formControlName="lastName" placeholder="Enter Last Name">
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="row">
+                              <div class="col-6">
+                                  <div class="form-group">
+                                      <label>DOB</label>
+                                      <input type="date" class="form-control" formControlName="dob" placeholder="Enter DOB">
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="row">
+                              <div class="col-6">
+                                  <div class="form-group">
+                                      <label>Contact No</label>
+                                      <input type="text" class="form-control" formControlName="contactNo" placeholder="Enter Contact No">
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label>Address</label>
+                              <textarea rows="3" class="form-control" formControlName="address" placeholder="Enter Address"></textarea>
+                          </div>
+
+                          <div class="float-right">
+                              <button type="reset" class="btn btn-secondary" (click)="onReset()"> Clear</button>
+                              <button type="submit" class="btn btn-primary ml-2" [disabled]="(loading$ | async)"><i *ngIf="(loading$ |async)" class="fas fa-spinner fa-spin"></i> {{isUpdate ? 'Update': 'Save'}}</button>
+                          </div>
+
+                      </form>
+                  </div>
+              </div>
+
+          </div>
+          <div class="col-md-8">
+
+              <div class="card">
+                  <div class="card-body">
+                      <div class="row">
+                          <table class="table table-hover">
+                              <thead>
+                                  <tr>
+                                      <th>First Name</th>
+                                      <th>Last Name</th>
+                                      <th>DOB</th>
+                                      <th>Contact No</th>
+                                      <th>Address</th>
+                                      <th>Actions</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let item of customerList">
+                                      <td>{{item.firstName}}</td>
+                                      <td>{{item.lastName}}</td>
+                                      <td>{{item.dob}}</td>
+                                      <td>{{item.contactNo}}</td>
+                                      <td>{{item.address}}</td>
+                                      <td>
+                                        <button type="button" class="btn btn-success mr-2" (click)="onUpdate(item)">U</button>
+                                        <button type="button" class="btn btn-danger" (click)="onDelete(item.id)">D</button>
+                                      </td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
