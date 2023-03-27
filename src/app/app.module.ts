@@ -3,18 +3,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from './components/login/login.component';
-import { AuthGuard } from './shared/guards/auth.guard';
-import { observable } from 'rxjs';
-import { CustomerComponent } from './components/customer/customer.component';
+import { ProductComponent } from './components/product/product.component';
 import { CommonInterceptor } from './shared/interceptors/common.interceptor';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { SigninComponent } from './components/signin/signin.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 
@@ -29,8 +28,8 @@ const routes: Routes = [
     component: LoginComponent
   },
 {
-  path: 'customer',
-  component: CustomerComponent,
+  path: 'product',
+  component: ProductComponent,
 },
 
 ];
@@ -38,11 +37,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     LoginComponent,
-    CustomerComponent,
-
-
+    ProductComponent,
+    SigninComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

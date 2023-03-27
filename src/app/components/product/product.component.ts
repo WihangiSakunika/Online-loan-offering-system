@@ -2,28 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable } from 'rxjs';
-//import { CustomerService } from 'src/app/services/customer.service';
-
-
-import { CustomerService } from '../../services';
+import { ProductService } from '../../services';
 
 @Component({
   selector: 'app-customer',
-  templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.css']
+  templateUrl: './product.component.html',
+  styleUrls: ['./product.component.css']
 })
-export class CustomerComponent implements OnInit {
+export class ProductComponent implements OnInit {
   loading:BehaviorSubject<boolean>=new BehaviorSubject<boolean>(false);
   loading$:Observable<boolean>;
 
-  customerForm!:FormGroup
-  customerList: any[] = [];
+  productForm!:FormGroup
+  productList: any[] = [];
   isUpdate:boolean=false;
   selectedId:string;
 
   constructor(
     private fb: FormBuilder,
-    private customerService:CustomerService,
+    private productService:ProductService,
     private toastr : ToastrService
   ) { }
   ngOnInit(): void {
@@ -32,17 +29,18 @@ export class CustomerComponent implements OnInit {
     this.getList();
   }
   initForm(): void {
-    this.customerForm = this.fb.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      dob: ['', [Validators.required]],
-      contactNo: ['', [Validators.required]],
-      address: ['', [Validators.required]]
+    this.productForm = this.fb.group({
+      Name: ['', [Validators.required]],
+      brand: ['', [Validators.required]],
+      status: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      price: ['', [Validators.required]],
+      availableQty: ['', [Validators.required]]
     });
   }
 
   onSaveOrUpdate(): void {
-    if (this.customerForm.invalid){
+    if (this.productForm.invalid){
       alert('Please fill required fields');
       return;
   }
@@ -50,7 +48,7 @@ export class CustomerComponent implements OnInit {
 
   if(this.isUpdate){
 //Update Record
-this.customerService.update(this.customerForm.value,this.selectedId).subscribe(res=>{
+this.productService.update(this.productForm.value,this.selectedId).subscribe(res=>{
        this.getList();
        this.loading.next(false);
        alert('Record has been updated.');
@@ -59,8 +57,8 @@ this.customerService.update(this.customerForm.value,this.selectedId).subscribe(r
 
   }else{
 //Save Record
-    this.customerService.create(this.customerForm.value).subscribe(res=>{
-      this.customerForm.reset();
+    this.productService.create(this.productForm.value).subscribe(res=>{
+      this.productForm.reset();
       this.getList();
       this.loading.next(false);
     },error =>{
@@ -71,20 +69,21 @@ this.customerService.update(this.customerForm.value,this.selectedId).subscribe(r
     }
   }
     getList():void{
-      this.customerService.getAll().subscribe(res => {
-        this.customerList = res;
+      this.productService.getAll().subscribe(res => {
+        this.productList = res;
       } );
     }
-    onUpdate(customer:any):void{
+    onUpdate(product:any):void{
       this.isUpdate=true,
-      this.selectedId=customer.id,
+      this.selectedId=product.id,
 
-      this.customerForm.patchValue({
-        firstName:customer.firstName,
-        lastname:customer.lastName,
-        dob:customer.dob,
-        contactNo:customer.contactNo,
-        address:customer.address
+      this.productForm.patchValue({
+        Name: product.Name,
+        brand: product.brand,
+        status: product.status,
+        description: product.description,
+        price: product.price,
+        availableQty: product.availableQty
       });
     }
 
@@ -92,7 +91,7 @@ onDelete(id:string):void{
   let isConfirm : boolean=confirm('Are you want to delete this Record?');
 
   if(isConfirm){
-    this.customerService.delete(id).subscribe(res =>{
+    this.productService.delete(id).subscribe(res =>{
       console.log(res);
       this.getList();
   })
