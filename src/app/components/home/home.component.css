@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap');
+.container{
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid #000000;
+  padding: 10px;
+  box-shadow: wheat;
+  border-radius: 5px;
+  margin-top: 45px;
+  width: 700px;
+  height: 450px;
+}
+h1{
+  font-family: 'Abril Fatface', cursive;
+  font-size: 70px;
+  color: rgb(255, 3, 3);
+  text-align: center;
+}
+p
+{
+  text-align: center;
+}
+button{
+  margin-left: 260px;
+  padding: 25px 30px;
+  background-color: #050801;
+  color: #03e9f4;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  letter-spacing: 4px;
+  overflow: hidden;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+button:hover{
+    background: #03e9f4;
+    color: #050801;
+    box-shadow: 0 0 5px #03e9f4,
+                0 0 25px #03e9f4,
+                0 0 50px #03e9f4,
+                0 0 200px #03e9f4;
+     -webkit-box-reflect:below 1px linear-gradient(transparent, #0005);
+}

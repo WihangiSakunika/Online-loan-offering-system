@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  /* background-color: aqua; */
+  background-image: url(https://cdn.dribbble.com/userupload/3815094/file/original-42ccaf40aa2b185b8433510059c5649a.png?compress=1&resize=1600x900);
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* font-family: 'Roboto Slab', serif; */
+}

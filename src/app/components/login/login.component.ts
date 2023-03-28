@@ -1,5 +1,5 @@
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,19 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  userName!: string;
-  password!: string;
-
-  constructor(
-    private router: Router
-  ) { }
+  userName :string;
+  password : string;
+  constructor( private router: Router) { }
 
   ngOnInit(): void {
   }
 
   login(){
 
-    if(this.userName == "supun" && this.password == "1234"){
+    if(this.userName == "Bubble_Team" && this.password == "1234"){
 
       localStorage.setItem('userId', '1');
       localStorage.setItem('userName', this.userName);
@@ -30,5 +27,4 @@ export class LoginComponent implements OnInit {
       alert('Username or password is incorrect!');
     }
   }
-
 }

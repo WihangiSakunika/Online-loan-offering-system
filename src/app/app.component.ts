@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 
 
@@ -9,14 +11,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  routePath: string = 'products';
-  constructor() {
+  constructor(private router: Router) {}
 
-  }
 
-  goTo(path: string){
-    this.routePath = path;
-  }
 
 
 }
