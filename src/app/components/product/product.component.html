@@ -1,109 +1,165 @@
-<p>Welcome To admin Panel</p>
-<div class="p-5">
-  <div class="col-md-12">
-      <h2>BB Produt Registration</h2>
-      <div class="row">
-          <div class="col-md-4">
-              <div class="card">
-                  <div class="card-body">
-                      <form [formGroup]="productForm" (ngSubmit)="onSaveOrUpdate()">
 
-                          <div class="row">
-                              <div class="col-6">
-                                  <div class="form-group">
-                                      <label>Product Name </label>
-                                      <input type="text" class="form-control" formControlName="Name" placeholder="Enter product Name">
-                                  </div>
-                              </div>
-                              <div class="col-6">
-                                  <div class="form-group">
-                                      <label>Product brand</label>
-                                      <input type="text" class="form-control" formControlName="brand" placeholder="Enter product brand">
-                                  </div>
-                              </div>
-                          </div>
+<!-- admin panel  -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-blue order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Orders Received</h6>
+                    <h2 class="text-right"><i class="fa fa-cart-plus f-left"></i><span>486</span></h2>
+                    <p class="m-b-0">Completed Orders<span class="f-right">351</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-green order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Total of Customers</h6>
+                    <h2 class="text-right"><i class="fa fa-rocket f-left"></i><span>486</span></h2>
+                    <a routerLink="/CusList" class="details">Customer Details</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-yellow order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Product Stocks</h6>
+                    <h2 class="text-right"><i class="fa fa-refresh f-left"></i><span>150 In stock</span></h2>
+                    <p class="m-b-0">Out of product<span class="f-right">200 out of stock</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4 col-xl-3">
+            <div class="card bg-c-pink order-card">
+                <div class="card-block">
+                    <h6 class="m-b-20">Loan Balance</h6>
+                    <h2 class="text-right"><i class="fa fa-credit-card f-left"></i><span>15000</span></h2>
+                    <p class="m-b-0">installment plans<span class="f-right">3</span></p>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>
+        <!-- product -->
+        <div class="p-5">
+            <div class="col-md-12">
 
-                          <div class="row">
-                              <div class="col-6">
-                                  <div class="form-group">
-                                      <label>status</label>
-                                      <input type="text" class="form-control" formControlName="status" placeholder="Enter status">
-                                  </div>
-                              </div>
-                          </div>
-
-                          <div class="row">
-                              <div class="col-6">
-                                  <div class="form-group">
-                                      <label>price</label>
-                                      <input type="number" class="form-control" formControlName="price" placeholder="Enter price">
-                                  </div>
-                              </div>
-                          </div>
-
-                          <div class="row">
-                            <div class="col-6">
-                                <div class="form-group">
-                                    <label>availableQty</label>
-                                    <input type="number" class="form-control" formControlName="availableQty" placeholder="Enter availableQty">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <form [formGroup]="productForm" (ngSubmit)="onSaveOrUpdate()">
+                                    <h2>BB Produt Registration</h2>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Product Name </label>
+                                                <input type="text" class="form-control" formControlName="Name"
+                                                    placeholder="Enter product Name">
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>Product brand</label>
+                                                <input type="text" class="form-control" formControlName="brand"
+                                                    placeholder="Enter product brand">
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>status</label>
+                                                <input type="text" class="form-control" formControlName="status"
+                                                    placeholder="Enter status">
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>price</label>
+                                                <input type="number" class="form-control" formControlName="price"
+                                                    placeholder="Enter price">
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <div class="form-group">
+                                                <label>availableQty</label>
+                                                <input type="number" class="form-control" formControlName="availableQty"
+                                                    placeholder="Enter availableQty">
+                                            </div>
+                                        </div>
+                                    </div>
+        
+                                    <div class="form-group">
+                                        <label>description</label>
+                                        <textarea rows="3" class="form-control" formControlName="description"
+                                            placeholder="Enter description"></textarea>
+                                    </div>
+        
+                                    <div class="float-right">
+                                        <button type="reset" class="btn btn-secondary" (click)="onReset()">
+                                            Clear</button>
+                                        <button type="submit" class="btn btn-primary ml-2" [disabled]="(loading$ | async)"><i
+                                                *ngIf="(loading$ |async)" class="fas fa-spinner fa-spin"></i> {{isUpdate ?
+                                            'Update':
+                                            'Save'}}</button>
+                                    </div>
+        
+                                </form>
+                            </div>
+                        </div>
+        
+                    </div>
+                    <div class="col-md-8">
+        
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th> Name</th>
+                                                <th>brand</th>
+                                                <th>status</th>
+                                                <th>price</th>
+                                                <th>availableQty</th>
+                                                <th>Address</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of productList">
+                                                <td>{{item.Name}}</td>
+                                                <td>{{item.brand}}</td>
+                                                <td>{{item.status}}</td>
+                                                <td>{{item.price}}</td>
+                                                <td>{{item.availableQty}}</td>
+                                                <td>{{item.description}}</td>
+                                                <hr>
+                                                <td>
+                                                    <button type="button" class="btn btn-success mr-2"
+                                                        (click)="onUpdate(item)">U</button>
+                                                    <button type="button" class="btn btn-danger"
+                                                        (click)="onDelete(item.id)">D</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
-
-                          <div class="form-group">
-                              <label>description</label>
-                              <textarea rows="3" class="form-control" formControlName="description" placeholder="Enter description"></textarea>
-                          </div>
-
-                          <div class="float-right">
-                              <button type="reset" class="btn btn-secondary" (click)="onReset()"> Clear</button>
-                              <button type="submit" class="btn btn-primary ml-2" [disabled]="(loading$ | async)"><i *ngIf="(loading$ |async)" class="fas fa-spinner fa-spin"></i> {{isUpdate ? 'Update': 'Save'}}</button>
-                          </div>
-
-                      </form>
-                  </div>
-              </div>
-
-          </div>
-          <div class="col-md-8">
-
-              <div class="card">
-                  <div class="card-body">
-                      <div class="row">
-                          <table class="table table-hover">
-                              <thead>
-                                  <tr>
-                                      <th> Name</th>
-                                      <th>brand</th>
-                                      <th>status</th>
-                                      <th>price</th>
-                                      <th>availableQty</th>
-                                      <th>Address</th>
-                                      <th>Actions</th>
-                                  </tr>
-                              </thead>
-                              <tbody>
-                                  <tr *ngFor="let item of productList">
-                                      <td>{{item.Name}}</td>
-                                      <td>{{item.brand}}</td>
-                                      <td>{{item.status}}</td>
-                                      <td>{{item.price}}</td>
-                                      <td>{{item.availableQty}}</td>
-                                      <td>{{item.description}}</td>
-                                      <hr>
-                                    <td>
-                                      <button type="button" class="btn btn-success mr-2" (click)="onUpdate(item)">U</button>
-                                      <button type="button" class="btn btn-danger" (click)="onDelete(item.id)">D</button>
-                                    </td>
-                                  </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
-
-
+                    </div>
+                </div>
+            </div>
+        </div>

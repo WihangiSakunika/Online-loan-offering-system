@@ -1,0 +1,70 @@
+<div class="p-6">
+  <div class="col-md-12">
+      <div class="row">
+          <div class="col-md-4">
+              <div class="card">
+                  <div class="card-body">
+                      <form [formGroup]="customerForm" (ngSubmit)="onSaveOrUpdate()">
+                        <h2>Customer Registration</h2>
+                          <div class="row">
+                              <div class="col-6">
+                                  <div class="form-group">
+                                      <label>fullName</label>
+                                      <input type="text" class="form-control" formControlName="fullName" placeholder="Enter fullName">
+                                  </div>
+                              </div>
+                              <div class="col-6">
+                                  <div class="form-group">
+                                      <label>Date of Birthday</label>
+                                      <input type="date" class="form-control" formControlName="dob">
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="row">
+                              <div class="col-6">
+                                  <div class="form-group">
+                                      <label>loan Balance</label>
+                                      <input type="number" class="form-control" formControlName="loanBalance" placeholder="15000 only" [disabled]="isDisabled">
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="row">
+                              <div class="col-6">
+                                  <div class="form-group">
+                                      <label>usedAmount</label>
+                                      <input type="number" class="form-control" formControlName="usedAmount" placeholder="usedAmount">
+                                  </div>
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <label>installmentPlan</label>
+                              <input type="number" class="form-control" formControlName="installmentPlan" placeholder="installmentPlan 3 only">
+                          </div>
+
+                          <div class="form-group">
+                            <label>email</label>
+                            <input type="text" class="form-control" formControlName="email" placeholder="Email"/>
+                        </div>
+
+                          <div class="float-right">
+                              <button type="reset" class="btn btn-secondary"  (click)="onReset()"> Clear</button>
+                              <button type="submit" class="btn btn-primary ml-2"
+                              [disabled]="(loading$ | async)"><i *ngIf="(loading$ |async)"
+                                  class="fas fa-spinner fa-spin"></i> {{isUpdate ? 'Update':
+                              'Registration'}}</button>
+                            </div>
+
+                      </form>
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+
+

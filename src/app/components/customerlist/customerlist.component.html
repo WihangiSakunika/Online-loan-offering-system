@@ -1,0 +1,118 @@
+<div class="p-5">
+    <div class="col-md-12">
+        <h2>BB Produt Registration</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <form [formGroup]="customerForm" (ngSubmit)="onSaveOrUpdate()">
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>full Name</label>
+                                        <input type="text" class="form-control" formControlName="fullName"
+                                            placeholder="Enter full Name">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Date of Birth</label>
+                                        <input type="text" class="form-control" formControlName="dob"
+                                            placeholder="Enter customer dob">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>loan Balance</label>
+                                        <input type="text" class="form-control" formControlName="loanBalance"
+                                            placeholder="Enter loanBalance">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>used Amount</label>
+                                        <input type="number" class="form-control" formControlName="usedAmount"
+                                            placeholder="Enter usedAmount">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>installment Plan</label>
+                                        <input type="number" class="form-control" formControlName="installmentPlan"
+                                            placeholder="Enter installmentPlan">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>email</label>
+                                <input type="text" class="form-control" formControlName="email"
+                                placeholder="Enter email">
+                            </div>
+
+                            <div class="float-right">
+                                <button type="reset" class="btn btn-secondary" (click)="onReset()">
+                                    Clear</button>
+                                <button type="submit" class="btn btn-primary ml-2"
+                                    [disabled]="(loading$ | async)"><i *ngIf="(loading$ |async)"
+                                        class="fas fa-spinner fa-spin"></i> {{isUpdate ? 'Update':
+                                    'Save'}}</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-8">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>fullName</th>
+                                        <th>dob</th>
+                                        <th>loanBalance</th>
+                                        <th>usedAmount</th>
+                                        <th>installmentPlan</th>
+                                        <th>email</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of CustomerList">
+                                        <td>{{item.fullName}}</td>
+                                        <td>{{item.dob}}</td>
+                                        <td>{{item.loanBalance}}</td>
+                                        <td>{{item.usedAmount}}</td>
+                                        <td>{{item.installmentPlan}}</td>
+                                        <td>{{item.email}}</td>
+                                        <hr>
+                                        <td>
+                                            <button type="button" class="btn btn-success mr-2"
+                                                (click)="onUpdate(item)">U</button>
+                                            <button type="button" class="btn btn-danger"
+                                                (click)="onDelete(item.id)">D</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

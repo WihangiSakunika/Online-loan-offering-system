@@ -33,6 +33,8 @@ import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { CustomerComponent } from './components/customer/customer.component';
+import { CustomerlistComponent } from './components/customerlist/customerlist.component';
 
 const routes: Routes = [
   {
@@ -55,7 +57,11 @@ const routes: Routes = [
 },
 {
   path: 'regi',
-  component: RegistrationComponent,
+  component: CustomerComponent,
+},
+{
+  path: 'CusList',
+  component: CustomerlistComponent,
 },
 ];
 
@@ -67,6 +73,8 @@ const routes: Routes = [
     LoginComponent,
     HeaderComponent,
     RegistrationComponent,
+    CustomerComponent,
+    CustomerlistComponent,
   ],
   imports: [
     BrowserModule,
