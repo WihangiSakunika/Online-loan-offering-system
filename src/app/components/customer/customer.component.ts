@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { CustomerService } from '../../services';
@@ -29,10 +29,10 @@ export class CustomerComponent implements OnInit {
   initForm(): void {
     this.customerForm = this.fb.group({
       fullName: ['', [Validators.required]],
-      dob: ['', [Validators.required]],
-      loanBalance: ['', [Validators.required]],
-      usedAmount: ['', [Validators.required]],
-      installmentPlan: ['', [Validators.required]],
+      dob: ['', [Validators.required , this.minimumAgeValidator(18)]],
+      loanBalance: ['', [Validators.required,Validators.max(15000)]],
+      usedAmount: ['', [Validators.required  , Validators.max(15000)]],
+      installmentPlan: ['', [Validators.required , Validators.max(3)]],
       email: ['', [Validators.required]]
     });
   }
@@ -101,4 +101,11 @@ export class CustomerComponent implements OnInit {
   disableInputField() {
     this.isDisabled = true;
   }
-}
+  minimumAgeValidator(minAge: number): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      const birthDate = new Date(control.value);
+      const ageInMs = Date.now() - birthDate.getTime();
+      const ageInYears = ageInMs / (1000 * 3600 * 24 * 365);
+      return ageInYears >= minAge ? null : { 'minimumAge': { value: control.value } };
+    };
+}}
